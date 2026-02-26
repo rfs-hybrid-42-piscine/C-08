@@ -16,7 +16,7 @@
 ---
 
 ## 💡 Description
-**C 08** transitions from raw algorithmic problem-solving to software architecture and project organization. 
+**C 08** transitions from raw algorithmic problem-solving to software architecture and project organization.
 
 In this module, you will learn how to create Header files (`.h`) to share function prototypes across multiple files, use Macros (`#define`) to replace code at compile time for better readability and optimization, and build your own custom data types using `struct` and `typedef`. Finally, you will dynamically allocate and manipulate an entire array of these custom structures.
 
@@ -31,7 +31,7 @@ In this module, you will learn how to create Header files (`.h`) to share functi
 | :--- | :--- |
 | **[`ex00: ft.h`](ex00)** | **Header Files:** Creating a standard header file containing function prototypes. <br><br>**Logic:** We use "Include Guards" (`#ifndef FT_H`, `#define FT_H`, `#endif`) to prevent double-inclusion compilation errors. Inside, we declare the prototypes for basic functions like `ft_putchar` and `ft_strlen` so they can be referenced globally by any `.c` file that includes this header. |
 | **[`ex01: ft_boolean.h`](ex01)** | **Booleans & Macros:** Building a custom boolean type and logic macros to make a provided `main.c` compile. <br><br>**Logic:** C natively lacks a boolean type. We use `typedef int t_bool;` and `#define TRUE 1` / `#define FALSE 0`. We also define macros like `#define EVEN(x) (x % 2 == 0)` to perform mathematical logic seamlessly during preprocessing. |
-| **[`ex02: ft_abs.h`](ex02)** | **Macro Functions:** Creating a macro that dynamically calculates an absolute value. <br><br>**Logic:** We use a ternary operator inside a `#define`: `#define ABS(Value) (((Value) < 0) ? -(Value) : (Value))`. *Crucial Trap:* Every instance of `Value` must be wrapped in strict parentheses to prevent mathematical precedence errors if a complex equation (like `ABS(5 - 10)`) is passed into the macro! |
+| **[`ex02: ft_abs.h`](ex02)** | **Macro Functions:** Creating a macro that dynamically calculates an absolute value. <br><br>**Logic:** The 42 Norm strictly forbids ternary operators. To bypass this, we use a mathematical boolean evaluation inside a `#define`: `#define ABS(Value) ((Value) * (((Value) > 0) - ((Value) < 0)))`. *Crucial Trap:* Every single instance of `Value` must be wrapped in strict parentheses to prevent mathematical precedence errors if a complex equation (like `ABS(5 - 10)`) is passed into the macro! |
 
 ### 🔢 Structures & Data Types
 | Exercise | Concept & Logic |
@@ -67,10 +67,17 @@ To test `ex04` and `ex05` (which are actual `.c` files), you must compile them t
    ```
 
 3. **Testing Struct Arrays (ex04 & ex05):**
-   Use a custom `tester.c` that includes `ft_stock_str.h` and compiles both `.c` files.
+   Use a custom **[`tester.c`](tester.c)** that includes **[`ft_stock_str.h`](ft_stock_str.h)** and compiles both `.c` files. **Note:** You must use the `-I .` flag so the compiler knows to look in the root directory for the header file!
    ```bash
-   cc -Wall -Wextra -Werror tester.c ex04/ft_strs_to_tab.c ex05/ft_show_tab.c -o test_structs
+   cc -Wall -Wextra -Werror -I . -D EX04 -D EX05 tester.c ex04/ft_strs_to_tab.c ex05/ft_show_tab.c -o test_structs
    ./test_structs argument1 argument2
+   ```
+
+4. **Test ALL Exercises at Once:**
+   By passing the `-D TEST_ALL` master flag, you can activate the entire testing suite in one go! The command compiles the tester alongside the required source files and links the custom headers.
+   ```bash
+   cc -Wall -Wextra -Werror -I . -D TEST_ALL tester.c ex04/ft_strs_to_tab.c ex05/ft_show_tab.c -o test_all
+   ./test_all argument1 argument2
    ```
 
 ### 🚨 The Norm & CheckDefine
