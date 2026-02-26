@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 02:41:12 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/26 02:49:16 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/02/26 03:24:52 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void	set_point(t_point *point)
 /* --- Main Testing Function --- */
 int	main(int argc, char **argv)
 {
-	(void)argv; /* Bypasses the unused parameter warning */
+	(void)argv; /* argv is never used in any of these tests */
+
+#ifndef EX01
+	(void)argc; /* Only void argc if EX01 is NOT being compiled */
+#endif
 
 #ifdef EX01
 	printf("--- EX01: ft_boolean.h ---\n");
