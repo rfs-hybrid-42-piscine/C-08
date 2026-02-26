@@ -14,7 +14,7 @@ Create a function that parses the array of structures generated in the previous 
    *Check out the source file here:* **[`ft_show_tab.c`](ft_show_tab.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-08` directory. You must pass the `-D EX04` flag to the compiler to selectively activate the test for this specific exercise! Since this requires **[`ft_stock_str.h`](../ft_stock_str.h)**, you must compile with the `-I .` flag so the compiler knows to check the current directory for the header! You must compile this alongside `ex04` so the struct array can be generated before it is displayed!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-08` directory. You must pass the `-D EX05` flag to the compiler to selectively activate the test for this specific exercise! Since this requires **[`ft_stock_str.h`](../ft_stock_str.h)**, you must compile with the `-I .` flag so the compiler knows to check the current directory for the header! You must compile this alongside `ex04` so the struct array can be generated before it is displayed!
    ```bash
    cc -Wall -Wextra -Werror -I . -D EX04 -D EX05 ../tester.c ../ex04/ft_strs_to_tab.c ft_show_tab.c -o test_ex05
    ./test_ex05 arg1 arg2
