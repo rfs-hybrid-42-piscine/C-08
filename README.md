@@ -54,10 +54,20 @@ Because `ex00` through `ex03` are strictly `.h` (header) files, they cannot be c
 To test `ex04` and `ex05` (which are actual `.c` files), you must compile them together with a `main` function that generates the strings and passes them into the struct array.
 
 1. **Clone the repository:**
+   You can clone this module directly, or pull the entire 42 Piscine parent repository which includes this module as a submodule.
+
+   **Option A: Clone this module directly**
    ```bash
-   git clone <your_repository_link>
+   git clone git@github.com:rfs-hybrid-42-piscine/C-08.git C-08
+   cd C-08
+   ```
+
+   **Option B: Clone the parent repository (with submodules)**
+   ```bash
+   git clone --recurse-submodules git@github.com:rfs-hybrid/42-Piscine.git 42-Piscine
    cd 42-Piscine/C-08
    ```
+   *(Note: The `--recurse-submodules` flag ensures all nested module repositories are populated immediately.)*
 
 2. **Testing Headers (ex00 - ex03):**
    Create a temporary `main.c` file, include your header (`#include "ex02/ft_abs.h"`), and compile it.
